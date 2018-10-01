@@ -13,23 +13,23 @@ function createHook(repo, appName) {
     shell.cd(`/usr/website/${repo}`)
     let pull = shell.exec('git pull')
     let install = shell.exec('npm install')
-    let restart = shell.exec(`pm2 restart ${appName}`)
     let commandResults = {
       pull,
       install,
-      restart,
+      // restart,
     }
     let isError = Object.keys(commandResults).some((item) => {
       return commandResults[item].code !== 0
     })
     if (isError) {
-      res.json({
+      res.status(500).json({
         message: 'error'
       })
     } else {
       res.json({
         message: 'done'
       })
+      let restart = shell.exec(`pm2 restart ${appName}`)
     }
   });
 }
