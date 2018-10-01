@@ -33,6 +33,7 @@ function createHook(repo, appName) {
     }
   });
 }
+// example:http://47.106.168.180:4000/payload/yineng-website-back-end
 
 createHook('yineng-website-back-end', 'yineng-website')
 createHook('webhook-server')
