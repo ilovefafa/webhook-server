@@ -13,7 +13,7 @@ function createHook(repo, appName) {
     shell.cd(`/usr/website/${repo}`)
     let pull = shell.exec('git pull')
     let install = shell.exec('npm install')
-    let restart = ''
+    let restart = { code: 0 }
     //webhook-server需等待响应发出后再重启
     if (repo === 'webhook-server') {
       res.on('finish', () => {
